@@ -1,6 +1,6 @@
-import { Router } from 'express';
+const Router = require('express').Router;
 
-export default () => {
+module.exports = () => {
   const api = Router();
 
   api.get('/', (req, res) => {  

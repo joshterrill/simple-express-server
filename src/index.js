@@ -1,16 +1,16 @@
-import express from 'express';
-import morgan from 'morgan';
-import bodyParser from 'body-parser';
-import api from './api';
+const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const api = require('./api');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(express.static('public'));
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Server started http://localhost:3000');
+app.listen(port, () => {
   app.use(api());
+  console.log(`Server started http://localhost:${port}`);  
 });
